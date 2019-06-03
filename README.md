@@ -11,4 +11,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 
 Screenshot:
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/saurabhku/employee-management-service-ui/blob/master/images/Screenshot%202019-06-03%20at%203.02.33%20PM.png)
