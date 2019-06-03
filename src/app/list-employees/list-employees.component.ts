@@ -5,6 +5,7 @@ import { Employee } from '../model/employee';
 import { Observable, of } from 'rxjs';
 import { Location } from '@angular/common';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { Router } from '@angular/router';
 
 
 
@@ -18,7 +19,7 @@ export class ListEmployeesComponent implements OnInit {
   employees : Employee[] = new Array();
   errorMsg : string = "";
 
-  constructor(private employeeService:EmsService,private route: ActivatedRoute, private location: Location) { }
+  constructor(private employeeService:EmsService,private route: ActivatedRoute, private location: Location, private router: Router) { }
 
   ngOnInit() {
     this.getEmployees();
@@ -28,6 +29,11 @@ export class ListEmployeesComponent implements OnInit {
     this.employeeObservable = this.employeeService.getEmployee();
     this.employeeObservable.subscribe(employeeList => this.employees = employeeList,
     error => this.errorMsg= error);
+  }
+
+  getInfo(event): void {
+    this.employeeService.getEmployeeById(event.data.employeeId);
+    this.router.navigateByUrl("/employeeinfo/"+ event.data.employeeId);
   }
 
   settings = {

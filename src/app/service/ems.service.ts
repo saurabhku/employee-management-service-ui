@@ -18,6 +18,11 @@ export class EmsService {
       .pipe(catchError(this.errorHandler))
   }  
 
+  getEmployeeById(employeeId: number) : Observable<Employee> {
+    return this.http.get<Employee>(this.getEmployeeUrl+'/'+employeeId)
+      .pipe(catchError(this.errorHandler))
+  }
+
   errorHandler( error: HttpErrorResponse) {
     return throwError( "Something Went Wrong !! Please Retry After Some Time ");
     
